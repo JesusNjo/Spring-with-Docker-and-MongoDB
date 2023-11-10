@@ -1,0 +1,54 @@
+CREAR, MODIFICAR Y CONSULTAR BASES DE DATOS Y COLECCIONES(TABLAS)----------------------------
+
+show dbs -- Para ver las bases de datos, es el SHOW DATABASES; DE MYSQL
+
+use <base de datos> -- Selecciona una base de datos almacenada, si no existe la crea.
+
+db.publicaciones.insertOne({"titulo": "Curso de mongoDB", "duracion": 12}) --Crearia una coleccion(tabla mysql) y le agregaria los datos (columnas en mysql)
+
+db -- Indica que base de datos esta seleccionada
+
+db.createCollection('clients') -- Para crear una colección, lo que seria una tabla en mysql.
+
+show collections -- Para ver las colecciones, es el equivalente a show tables en mysql.
+
+db.clients.insert(("name": "John Wick", "Age": 42))-- Para agregar algo a la tabla, se pasa un objeto JSON
+
+db.clients.find() -- Para ver los registros de la colección, sería el SELECY * FROM de Mysql
+
+db.clients.find().pretty() -- Lo mismo que el anterior pero mas detallado
+
+FILTRAR DATOS EN LAS BASES DE DATOS-------------------------
+
+db.clients.find({Name: "John Wick"}) -- Para filtrar, en este caso la persona con el nombre, es el WHERE de mysql
+
+db.usuarios.find({Age:{$gte:10}}); -- Para filtrar en este caso por edad, se pasa el parametro y $gte indica que sea MAYOR o IGUAL
+
+db.usuarios.find({Age:{$eq:10}}); -- Para filtrar en este caso por edad, el parametro $eq significa que es IGUAL al numero indicado
+
+db.usuarios.find({Age:{$ne:10}}); -- Para filtrar en este caso por edad, el parametro $ne significa que es DISTINTO al numero indicado
+
+db.usuarios.find({Age:{$gt:10}}); -- Para filtrar en este caso por edad, el parametro $gt significa que es MAYOR al numero indicado
+
+db.usuarios.find({Age:{$lt:10}}); -- Para filtrar en este caso por edad, el parametro $lt significa que es MENOR al numero indicado
+
+db.usuarios.find({Age:{$lte:10}}); -- Para filtrar en este caso por edad, el parametro $lte significa que es MENOR o IGUAL al numero indicado
+
+db.usuarios.find({edad: {$exists: true}}) -- Para comprobar si un campo existe o no
+
+db.usuarios.find({$or:[{nombre: "Camilo"} , {nombre: "Camilo 2"}]}) -- Para filtrar SI UNO U OTRO, en este caso si es un nombre o el otro
+
+db.usuarios.find({$and:[{nombre: "Camilo"} , {edad: 28}]}) -- Para filtrar con el AND, que se cumplan las condiciones
+
+db.clients.update({Age:35} , {$set: {Age:42}}) -- Para actualizar un objeto, busca y luego cambia con set
+
+db.clients.find.limit(1) -- Para consultar un limite de datos, como en mysql
+
+db.clients.deleteOne({Name: "John Wick"}) -- Para eliminar un objeto dentro de la colección
+
+cls -- Para limpiar la consola
+
+
+
+
+

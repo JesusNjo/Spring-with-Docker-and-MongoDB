@@ -1,0 +1,17 @@
+version: "5"
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: "mongodb"
+    ports:
+      - 27017:27017
+
+
+  spring_api:
+    image: spring_api:latest
+    container_name: "spring_api"
+    ports:
+      - 9090:8080
+
+    links:
+      - mongodb
